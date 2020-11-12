@@ -2,7 +2,7 @@ package edu.school.exam;
 
 public class Book 
 {
-	private static final String DEFAULT_FIELD_VALUE = "N/A";
+	private static final String NOT_AVAILABLE = "N/A";
 	
 	private String title;
 	private String author;
@@ -11,28 +11,15 @@ public class Book
 	
 	public Book()
 	{
-		this.title = DEFAULT_FIELD_VALUE;
-		this.author = DEFAULT_FIELD_VALUE;
-		this.publisher = DEFAULT_FIELD_VALUE;
-		this.isbn = DEFAULT_FIELD_VALUE;
+		this(NOT_AVAILABLE, NOT_AVAILABLE, NOT_AVAILABLE, NOT_AVAILABLE);
 	}
 	
 	public Book(String title, String author, String publisher, String isbn)
 	{
-		this();
-		
-		boolean areParametersInvalid = Validator.isNullOrEmpty(title) ||
-					Validator.isNullOrEmpty(author) ||
-					Validator.isNullOrEmpty(publisher) ||
-					Validator.isNullOrEmpty(isbn);
-		
-		if (!areParametersInvalid)
-		{
-			this.title = title;
-			this.author = author;
-			this.publisher = publisher;
-			this.isbn = isbn;
-		}
+		this.setTitle(title);
+		this.setAuthor(author);
+		this.setPublisher(publisher);
+		this.setIsbn(isbn);
 	}
 	
 	public String getTitle()
@@ -40,9 +27,25 @@ public class Book
 		return this.title;
 	}
 	
+	private void setTitle(String title)
+	{
+		if (!Validator.isNullOrEmpty(title))
+		{
+			this.title = title;
+		}
+	}
+	
 	public String getAuthor()
 	{
 		return this.author;
+	}
+	
+	private void setAuthor(String author)
+	{
+		if (!Validator.isNullOrEmpty(author))
+		{
+			this.author = author;
+		}
 	}
 	
 	public String getPublisher()
@@ -50,9 +53,25 @@ public class Book
 		return this.publisher;
 	}
 	
+	private void setPublisher(String publisher)
+	{
+		if (!Validator.isNullOrEmpty(publisher))
+		{
+			this.publisher = publisher;
+		}
+	}
+	
 	public String getIsbn()
 	{
 		return this.isbn;
+	}
+	
+	private void setIsbn(String isbn)
+	{
+		if (!Validator.isNullOrEmpty(isbn))
+		{
+			this.isbn = isbn;
+		}
 	}
 	
 	public String toString()
@@ -73,6 +92,6 @@ public class Book
 		bookInfo.append(String.format
 				(appendFormat, "ISBN", this.getIsbn()));
 		
-		return bookInfo.toString();
+		return bookInfo.toString().trim();
 	}
 }
