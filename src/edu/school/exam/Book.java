@@ -11,12 +11,16 @@ public class Book
 	
 	public Book()
 	{
-		this(DEFAULT_FIELD_VALUE, DEFAULT_FIELD_VALUE, 
-				DEFAULT_FIELD_VALUE, DEFAULT_FIELD_VALUE);
+		this.title = DEFAULT_FIELD_VALUE;
+		this.author = DEFAULT_FIELD_VALUE;
+		this.publisher = DEFAULT_FIELD_VALUE;
+		this.isbn = DEFAULT_FIELD_VALUE;
 	}
 	
 	public Book(String title, String author, String publisher, String isbn)
 	{
+		this();
+		
 		boolean areParametersInvalid = Validator.isNullOrEmpty(title) ||
 					Validator.isNullOrEmpty(author) ||
 					Validator.isNullOrEmpty(publisher) ||
@@ -28,13 +32,6 @@ public class Book
 			this.author = author;
 			this.publisher = publisher;
 			this.isbn = isbn;
-		}
-		else
-		{
-			this.title = DEFAULT_FIELD_VALUE;
-			this.author = DEFAULT_FIELD_VALUE;
-			this.publisher = DEFAULT_FIELD_VALUE;
-			this.isbn = DEFAULT_FIELD_VALUE;
 		}
 	}
 	
@@ -64,10 +61,17 @@ public class Book
 		
 		String appendFormat = "%s: %s\n";
 		
-		bookInfo.append(String.format(appendFormat, "Title", this.getTitle()));
-		bookInfo.append(String.format(appendFormat, "Author", this.getAuthor()));
-		bookInfo.append(String.format(appendFormat, "Publisher", this.getPublisher()));
-		bookInfo.append(String.format(appendFormat, "ISBN", this.getIsbn()));
+		bookInfo.append(String.format
+				(appendFormat, "Title", this.getTitle()));
+		
+		bookInfo.append(String.format
+				(appendFormat, "Author", this.getAuthor()));
+		
+		bookInfo.append(String.format
+				(appendFormat, "Publisher", this.getPublisher()));
+		
+		bookInfo.append(String.format
+				(appendFormat, "ISBN", this.getIsbn()));
 		
 		return bookInfo.toString();
 	}
