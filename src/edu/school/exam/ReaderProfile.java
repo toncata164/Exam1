@@ -68,7 +68,7 @@ public class ReaderProfile {
 		
 	}
 	
-	public String toString() {
+	public String toString() { // da se dovurshi
 		return "Name: " + getName() + "\n" + "Surname: " + getSurname() + "\n" + "Grade: " + getGrade() + "\n" ;
 			
 	}
