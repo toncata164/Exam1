@@ -64,12 +64,49 @@ public class ReaderProfile {
 			this.grade = grade;
 			this.major = major;
 			this.number = number;
+			books = new Book[30];
 		}
 		
 	}
 	
 	public String toString() { // da se dovurshi
-		return "Name: " + getName() + "\n" + "Surname: " + getSurname() + "\n" + "Grade: " + getGrade() + "\n" ;
-			
+		String result = "Name: " + getName() + "\n" + "Surname: " + getSurname() + "\n" + "Grade: " + getGrade() + "\n" + "Major: " + getMajor() + "\n" + "Phone Number: " + getNumber() + "\n" + "Books: ";
+		for(int i = 0; i < getBooks().length; i++) {
+			result += this.books[i].toString() + "\n";
+		}
+		
+		return result;	
+	}
+	
+	public boolean getBook(String bookTitle, String bookAuthor) {
+		Library schoolLibrary = Library.getInstance();
+		if(schoolLibrary.hasBook(bookTitle, bookAuthor) == true) {
+			for(int i = 0; i < books.length; i++) {
+				if(books[i] == null) {
+					books[i] = schoolLibrary.getBook(bookTitle, bookAuthor);
+					schoolLibrary.removeBook(bookTitle, bookAuthor);
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	
+	public boolean getBook(String bookName) {
+		Library schoolLibrary = Library.getInstance();
+		int booksWithBookName = schoolLibrary.numberOfBooksWithTheSameTitle(bookName);
+		if(booksWithBookName == 1) {
+			for(int i = 0; i < books.length; i++) {
+				if(books[i] == null) {
+					//trqbva da se doopravi
+					//books[i] = schoolLibrary.getBook(bookTitle, bookAuthor);
+					//schoolLibrary.removeBook(bookTitle, bookAuthor);
+				}
+			}
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 }

@@ -50,4 +50,44 @@ public class Library {
 		}
 		return temp;
 	}
+	
+	public void removeBook(String title, String author) {
+		for(int i = 0; i < numberOfBooks; i++) {
+			String currentBookTitle = books[i].getTitle();
+			String currentBookAuthor = books[i].getAuthor();
+			if(currentBookTitle.equals(title) && currentBookAuthor.equals(author)) {
+				for(int j = i + 1; j < numberOfBooks; j++) {
+					books[j] = books[j - 1];
+					books[numberOfBooks - 1] = null;
+					numberOfBooks--;
+				}
+				break;
+			}
+		}
+	}
+	
+	public boolean hasBook(String title, String author) {
+		//postaveno e, za da ne dava greshki pri metod getBook v ReaderProfile
+		//da se dovurshi
+		return true;
+	}
+	
+	public Book getBook(String title, String author) {
+		//postaveno e, za da ne dava greshki pri metod getBook v ReaderProfile
+		//da se dovurshi
+		Book newBook = new Book();
+		return newBook;
+	}
+	
+	
+	 int numberOfBooksWithTheSameTitle(String bookTitle) {
+		int countBooksWithTheSameTitle = 0;
+		for(int i = 0; i < numberOfBooks; i++) {
+			String currentBookTitle = books[i].getTitle();
+			if(currentBookTitle.equals(bookTitle)) {
+				countBooksWithTheSameTitle++;
+			}
+		}
+		return countBooksWithTheSameTitle;
+	}
 }
