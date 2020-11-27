@@ -79,6 +79,12 @@ public class Library {
 		return newBook;
 	}
 	
+	public Book getBook(String title)
+	{
+		//vrushta puravata sreshnata kniga s tova zaglavie
+		Book newBook = new Book();
+		return newBook;
+	}
 	
 	 int numberOfBooksWithTheSameTitle(String bookTitle) {
 		int countBooksWithTheSameTitle = 0;
