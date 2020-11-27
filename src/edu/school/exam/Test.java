@@ -1,5 +1,7 @@
 package edu.school.exam;
 
+import java.util.Formatter;
+
 public class Test 
 {
 	//pozdravi ot katq
@@ -10,5 +12,7 @@ public class Test
 		
 		Library library = Library.getInstance();
 		library.addBook(book);
+		
+		System.out.println(library.getAllBooksOfPublishers("Kushtata na Denis").length);
 	}
 }
