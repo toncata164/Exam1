@@ -67,6 +67,47 @@ public class Library {
 	public boolean hasBook(String title, String author) {
 		return getBook(title, author) != null;
 	}
+	
+	
+	
+	// Returns all books by an author in the library
+	public Book[] getAllBooksByAuthor(String author) {
+		Book[] authorBook = new Book[books.length];
+		int booksCount=0;
+		
+		for (int i = 0; i < numberOfBooks; i++) {
+			if (author == books[i].getAuthor()) {
+				authorBook[booksCount] = books[i];
+				booksCount++;
+			}
+		}
+		Book[] authorBooksCopy = new Book[booksCount];
+		for (int i = 0; i < authorBooksCopy.length; i++) {
+			authorBooksCopy[i] = authorBook[i];
+		}
+		
+		return authorBooksCopy;
+		
+	}
+	//Sorts all books in a library by a given boolean(accending or not)
+	public void sortBooksByTitle(boolean asc) {
+		
+		if (asc == true) {
+			for (int i = 0; i < numberOfBooks; i++) {
+				for (int j = 0; j < numberOfBooks; j++) {
+										
+					if (books[i].getTitle().compareTo(books[j].getTitle())>0) {
+						Book temp = books[i];
+						books[i] = books[j];
+						books[j] = temp;
+						
+					}
+				}
+			}
+		}
+		
+	}
+	
 
 	// If a book with this title and author exists, return it, else return null
 	public Book getBook(String title, String author) {
