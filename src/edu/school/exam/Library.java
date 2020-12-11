@@ -213,13 +213,33 @@ public class Library {
 	
 	public String getAuthorByTitle(String title)
 	{
-		
+		int countTitle=0;
+        for(int i=0;i<numberOfBooks;i++) {
+			if(books[i].getAuthor().equals(title)) {
+				countTitle++;
+			}
+		}
+        if(countTitle!=1) {
+        	return null;
+        }
 		for(int i = 0; i< numberOfBooks; i++)
 		{
-			
+		  if(books[i].getAuthor().equals(title)) {
+			  return books[i].getAuthor();
+			  
+		  }
 		}
+		
+		
+		return null;
 	}
 	
+	public void printBooks() {
+		for(int i=0;i<numberOfBooks;i++) {
+			System.out.println(books[i].toString());
+		}
+		
+	}
 	
 	
 }
