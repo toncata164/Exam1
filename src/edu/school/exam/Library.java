@@ -167,4 +167,59 @@ public class Library {
 
 		return result;
 	}
+	
+	public void sortByAuthor(boolean asc)
+	{
+		
+		
+		if(asc == true)
+		{
+			Book firstBook = books[0]; 
+			for(int i = 0; i< numberOfBooks; i++)
+			{
+				for(int j = 0; j< numberOfBooks; j++)
+				{
+					if(books[i].getAuthor().compareTo(books[j].getAuthor())<0)
+					{
+						Book swapBooks = books[j];
+						books[j] = books[i];
+						books[i] = swapBooks;
+					}
+				}
+			}
+		}
+		else
+		{
+			Book lastBook = books[0]; 
+			for(int i = 0; i< numberOfBooks; i++)
+			{
+				for(int j = 0; j< numberOfBooks; j++)
+				{
+					if(books[i].getAuthor().compareTo(books[j].getAuthor())>0)
+					{
+						Book swapBooks = books[j];
+						books[j] = books[i];
+						books[i] = swapBooks;
+					}
+				}
+			}
+		}
+	}
+	
+	Book getBookAtIndex(int index)
+	{
+		return books[index];
+	}
+	
+	public String getAuthorByTitle(String title)
+	{
+		
+		for(int i = 0; i< numberOfBooks; i++)
+		{
+			
+		}
+	}
+	
+	
+	
 }
