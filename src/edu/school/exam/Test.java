@@ -42,6 +42,6 @@ public class Test
 		library.printBooks();
 	*/
 		LibraryView test=new LibraryView();
-		
+		test.repaint();
 	}
 }
