@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 public class LibraryView extends JFrame{
@@ -20,6 +21,7 @@ public class LibraryView extends JFrame{
 	private JTextField txtPublisher;
 	private JLabel lblIsbn;
 	private JTextField txtIsbn;
+	private JTextArea txtArea;
 	
 	
 	public LibraryView() {
@@ -39,6 +41,14 @@ public class LibraryView extends JFrame{
 			public void actionPerformed(ActionEvent arg0) 
 			{
 				Library.getInstance().addBook(txtTitle.getText(), txtAuthor.getText(), txtPublisher.getText(), txtIsbn.getText());
+				
+				String book = txtAuthor.getText() + " " + txtTitle.getText()+ " " + txtPublisher.getText() + " " + txtIsbn.getText() + "\n";
+				txtArea.append(book);
+				
+				txtAuthor.setText("");
+				txtTitle.setText("");
+				txtPublisher.setText("");
+				txtIsbn.setText("");
 			}
 			
 		} );
@@ -82,6 +92,11 @@ public class LibraryView extends JFrame{
 		txtIsbn = new JTextField();
 		txtIsbn.setBounds(80, 140, 50, 30);
 		this.add(txtIsbn);
+		
+		txtArea = new JTextArea();
+		txtArea.setBounds(10, 180, 300, 300);
+		txtArea.setVisible(true);
+		this.add(txtArea);
 	}
 
 }
