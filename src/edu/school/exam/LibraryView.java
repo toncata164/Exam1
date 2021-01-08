@@ -22,13 +22,48 @@ public class LibraryView extends JFrame{
 	private JLabel lblIsbn;
 	private JTextField txtIsbn;
 	private JTextArea txtArea;
-	
+	private JButton btnClear;
+	private JButton btnSearch;
+	private JLabel lblEnterAuthor;
+	private JTextField txtEnterAuthor;
 	
 	public LibraryView() {
 		this.setBounds(0, 0, 500, 750);
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLayout(null);
+		
+		btnSearch = new JButton();
+		btnSearch.setBounds(300, 500, 100, 30);
+		btnSearch.setText("Search");
+		this.add(btnSearch);
+		btnSearch.addActionListener(new ActionListener()
+		{
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				txtAuthor.setText("");
+				txtTitle.setText("");
+				txtPublisher.setText("");
+				txtIsbn.setText("");
+				Book[] b = Library.getInstance().getAllBooksByAuthor(txtEnterAuthor.getText());
+				txtArea.setText("");
+				for(int i = 0; i < b.length; i++)
+				{
+					txtArea.append(b[i].toString());
+				}
+			}
+			
+		});
+		
+		lblEnterAuthor = new JLabel();
+		lblEnterAuthor.setText("Enter author");
+		lblEnterAuthor.setBounds(10, 500, 100, 30);
+		txtEnterAuthor = new JTextField();
+		txtEnterAuthor.setBounds(80, 500, 100, 30);
+		this.add(lblEnterAuthor);
+		this.add(txtEnterAuthor);
 		
 		btnAdd=new JButton();
 		btnAdd.setBounds(250,30,100,30);
@@ -52,6 +87,22 @@ public class LibraryView extends JFrame{
 			}
 			
 		} );
+		
+		btnClear = new JButton();
+		btnClear.setBounds(350, 30, 100, 30);
+		btnClear.setText("Clear");
+		this.add(btnClear);
+		btnClear.addActionListener(new ActionListener()
+		{
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				Library.getInstance().removeBooks();
+				txtArea.setText("");
+			}
+			
+		});
 		
 		lblAuthor = new JLabel("Author:");
 		lblAuthor.setBounds(20, 20, 100, 30);

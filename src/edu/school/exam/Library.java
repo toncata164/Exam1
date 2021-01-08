@@ -62,6 +62,15 @@ public class Library {
 			}
 		}
 	}
+	
+	public void removeBooks()
+	{
+		for(int i = 0; i < books.length; i++)
+		{
+			books[i] = null;
+		}
+		numberOfBooks = 0;
+	}
 
 	// Search for a book by title and author
 	public boolean hasBook(String title, String author) {
@@ -76,7 +85,7 @@ public class Library {
 		int booksCount=0;
 		
 		for (int i = 0; i < numberOfBooks; i++) {
-			if (author == books[i].getAuthor()) {
+			if (author.equals(books[i].getAuthor())) {
 				authorBook[booksCount] = books[i];
 				booksCount++;
 			}
