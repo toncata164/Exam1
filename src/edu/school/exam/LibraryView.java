@@ -26,6 +26,10 @@ public class LibraryView extends JFrame{
 	private JButton btnSearch;
 	private JLabel lblEnterAuthor;
 	private JTextField txtEnterAuthor;
+	private JLabel lblBookTitle;
+	private JTextField txtBookTitle;
+	private JButton btnBookTitle;
+	private JLabel lblSearchResult;
 	
 	public LibraryView() {
 		this.setBounds(0, 0, 500, 750);
@@ -148,6 +152,50 @@ public class LibraryView extends JFrame{
 		txtArea.setBounds(10, 180, 300, 300);
 		txtArea.setVisible(true);
 		this.add(txtArea);
+		
+		lblBookTitle = new JLabel("Title , Author");
+		lblBookTitle.setBounds(10, 540, 100, 30);
+		lblBookTitle.setVisible(true);
+		this.add(lblBookTitle);
+		
+		txtBookTitle = new JTextField();
+		txtBookTitle.setBounds(100, 540, 180, 30);
+		txtBookTitle.setVisible(true);
+		this.add(txtBookTitle);
+		
+		lblSearchResult = new JLabel();
+		lblSearchResult.setBounds(10, 580, 100, 30);
+		lblSearchResult.setVisible(true);
+		this.add(lblSearchResult);
+		
+		
+		btnBookTitle = new JButton();
+		btnBookTitle.setBounds(300, 540, 100, 30);
+		btnBookTitle.setVisible(true);
+		this.add(btnBookTitle);
+		btnBookTitle.setText("Buscar");
+		btnBookTitle.addActionListener(new ActionListener()
+		{
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String text = txtBookTitle.getText();
+				String[] splitedText = text.split(",");
+				boolean bookExists = Library.getInstance().hasBook(splitedText[0], splitedText[1]);
+				if(bookExists == true)
+				{
+					lblSearchResult.setText("true");
+				}
+				else
+					lblSearchResult.setText("false");
+						
+				}
+			
+		})
+;
+		
+		
+		
 	}
 
 }
