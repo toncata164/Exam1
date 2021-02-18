@@ -14,17 +14,22 @@ public class problem {
 		System.out.println("input k :");
 		int k = scan.nextInt();
 		
-		int minElement = minElementK68(arr, 0, k);
+		int minElement = minElementK68(arr, arr.length, k);
 		
 		if (minElement == -1)
 		{
 			System.out.println("no");
+		}
+		else
+		{
+			System.out.println("min correct number : " + minElement);
 		}
 		
 		minElement = min(arr, arr.length);
 		System.out.println("Min Element digits: ");
 		printMinElementLetters(minElement);
 		
+		System.out.println("new arr:");
 		printNewArr(arr, k, 0);
 	}
 	public static void input(int[] arr, int i)
@@ -38,24 +43,17 @@ public class problem {
 		input(arr, i + 1);
 	}
 	
-	//to do
 	public static int minElementK68(int[] arr, int index, int k)
 	{
-		if (index == arr.length - 1)
-			return arr[index];
+		if (index == 1)
+			return arr[0];
 		
-		if (arr[index] % k == 0)
-		{
-			int min = minElementK68(arr, index + 1, k);
-			
-			
-			boolean isContainsTo6 = String.format("%d", min).contains("6");
-			boolean isContainsTo8 = String.format("%d", min).contains("8");
-			if (isContainsTo6 || isContainsTo8)
-				return min;
-		}
-
-		 return -1;
+		int currentMin = minElementK68(arr, index - 1, k);
+		
+		if(arr[index-1] < currentMin && (arr[index - 1] % 2 == 0 && (arr[index - 1] % 3==0 || arr[index - 1] % 4 == 0)))
+			return arr[index-1];
+		else return currentMin;
+	
 	}
 	
 	public static int min(int[] arr, int n)
