@@ -1,9 +1,11 @@
+package exam.anastasiqn;
+
 import java.util.Scanner;
 
 public class zadacha 
 {
 	
-	public static void inizializeArray(int[]arr, int size, int index) // инициализация на масива
+	public static void inizializeArray(int[]arr, int size, int index) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	{
 		Scanner scan = new Scanner(System.in);
 		if(index == size )
@@ -15,7 +17,7 @@ public class zadacha
 		inizializeArray(arr, size, ++index);
 	}
 	
-	public static void getSmallestNumber(int[] arr, int min,int index, int k) // за да намира min в arr + parsingMin
+	public static void getSmallestNumber(int[] arr, int min,int index, int k) // пїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ min пїЅ arr + parsingMin
 	{
 		if(index == arr.length - 1)
 		{
@@ -40,7 +42,7 @@ public class zadacha
 	}
 
 	
-	public static void parsingMin(int min) // разделя числото от дясно наляво
+	public static void parsingMin(int min) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	{
 		if(min == 0)
 		{
@@ -50,7 +52,7 @@ public class zadacha
 		System.out.println((min%10)+ ("|"));	
 	}
 	
-	public static boolean isSixEightExist(int min)// да проверява дали 8 или 6 ги има като цифра на min
+	public static boolean isSixEightExist(int min)// пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ 8 пїЅпїЅпїЅ 6 пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ min
 	{
 		if(min == 0)
 		{
@@ -63,7 +65,7 @@ public class zadacha
 		return isSixEightExist(min/10);
 	}
 	
-	public static void multiplicationWithK(int k, int[]arr, int size, int index)//за умножаване на масива с най- дясната част на к
+	public static void multiplicationWithK(int k, int[]arr, int size, int index)//пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ- пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅ
 	{
 		int divider = k%10;
 		if(index == size )
@@ -84,7 +86,7 @@ public class zadacha
 		int k = scan.nextInt();
 		getSmallestNumber(arr, arr[0], 0, k); // 
 		
-		multiplicationWithK(k, arr, size, 0); //за умножаване на масива с най- дясната част на к
+		multiplicationWithK(k, arr, size, 0); //пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ- пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅ
 	}
-
+///4
 }

@@ -1,4 +1,4 @@
-package project;
+package exam.anastasiyat;
 
 import java.util.Scanner;
 
@@ -56,5 +56,5 @@ public class zadacha
 		size.close();
 		devider.close();
 	}
-
+//3
 }

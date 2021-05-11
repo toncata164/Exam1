@@ -1,4 +1,4 @@
-package testRecursion;
+package exam.gergana.testRecursion.src.testRecursion;
 
 import java.util.Scanner;
 
@@ -86,5 +86,5 @@ public class problem {
 		System.out.println(arr[index]);
 		printNewArr(arr, k, index + 1);
 	}
-	
+	//6
 }
