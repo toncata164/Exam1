@@ -1,4 +1,4 @@
-package zadacha.edu;
+package exam.dimitari;
 
 import java.util.Scanner;
 
