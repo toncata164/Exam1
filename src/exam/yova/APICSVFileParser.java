@@ -9,6 +9,7 @@ import java.util.List;
 
 public class APICSVFileParser 
 {
+	
 	public static ArrayList<PoliceKillingsInfo> parse(Path filePath)
 	{
 		ArrayList<PoliceKillingsInfo> info = new ArrayList<>();

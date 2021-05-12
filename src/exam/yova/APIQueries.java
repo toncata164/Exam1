@@ -37,6 +37,7 @@ public class APIQueries
 		.forEach(System.out::println);
 	}
 	
+	
 	public static void printNamesOfLatinxPeopleKilledBetweenJuneAndAugustSortedDescending(ArrayList<PoliceKillingsInfo> info)
 	{
 		//lmao this compares date of murder, not age
