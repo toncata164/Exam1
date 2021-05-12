@@ -41,6 +41,5 @@ public class FileParser
 			people.add(currentPerson);
 		}		
 		return people;
-	
 }
 }

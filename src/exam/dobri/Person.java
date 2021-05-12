@@ -95,6 +95,4 @@ public class Person
 		this.armed = armed;
 	}
 
-	
-	
 }
