@@ -19,7 +19,15 @@ public class CsvParser {
 			{
 				String[] args=line.split(",");
 				String name=args[0];
-				int age=Integer.parseInt(args[1]);
+				int age;
+				if(args[1].equals("Unknown")) 
+				{
+					args[1]="0";
+					age=Integer.parseInt(args[1]);
+				}else 
+				{
+					age=Integer.parseInt(args[1]);
+				}
 				String gender=args[2];
 				String raceethnicity=args[3];
 				String month=args[4];
