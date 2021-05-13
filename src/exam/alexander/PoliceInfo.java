@@ -11,18 +11,23 @@ public class PoliceInfo
 	private int year;
 	private String streetAddress;
 	private String city;
+	private String state;
 	
-	public PoliceInfo(String name, int age, String gender, String raceEthnicity, String month, int day, int year, String city) 
+	public PoliceInfo(String name, String age, String gender, String raceEthnicity, String month, int day, int year, String city, String state) 
 	{
-		super();
 		this.name = name;
-		this.age = age;
+		if(!age.equals("Unknown"))
+		{
+			this.age = Integer.parseInt(age);
+		}
+		
 		this.gender = gender;
 		this.raceEthnicity = raceEthnicity;
 		this.month = month;
 		this.day = day;
 		this.year = year;
 		this.city = city;
+		this.state = state;
 	}
 	public String getName() 
 	{
@@ -97,6 +102,12 @@ public class PoliceInfo
 	public void setCity(String city) 
 	{
 		this.city = city;
+	}
+	public String getState() {
+		return state;
+	}
+	public void setState(String state) {
+		this.state = state;
 	}
 
 	

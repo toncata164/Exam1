@@ -23,15 +23,16 @@ public class CsvParser
 			{
 				String[] args = line.split(",");
 				String name = args[0];
-				int age = Integer.parseInt(args[1]);
+				String age = args[1];
 				String gender = args[2];
 				String raceEthnicity = args[3];
 				String month = args[4];
 				int day = Integer.parseInt(args[5]);
 				int year = Integer.parseInt(args[6]);
 				String city = args[8];
+				String state = args[9];
 				
-				PoliceInfo info = new PoliceInfo(name, age, gender, raceEthnicity, month, day, year, city);
+				PoliceInfo info = new PoliceInfo(name, age, gender, raceEthnicity, month, day, year, city, state);
 				
 				policeInfos.add(info);
 			}
