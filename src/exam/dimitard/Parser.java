@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Parser {
@@ -24,6 +25,7 @@ public class Parser {
 			for(String line: allLines) {
 				String[] lines = line.split(",");
 				String name = lines[0];
+				String age = lines[1];
 				boolean isMan = lines[2].equals("Male");
 				String race = lines[3];
 				int day = Integer.parseInt(lines[5]);
@@ -32,7 +34,7 @@ public class Parser {
 				String state = lines[9];
 				String cause = lines[19];
 				
-				Profile person = new Profile (name,isMan,race,date,state,cause);
+				Profile person = new Profile (name,isMan,race,date,state,cause,age);
 				profiles.add(person);
 				
 			}
@@ -40,12 +42,90 @@ public class Parser {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		System.out.println(profiles.size());
 		
+		 
+		
+		whiteCar(profiles);
+		
+		System.out.println();
+		
+		blackKilled(profiles);
+		
+		System.out.println();
+		
+		womenKilled(profiles);
+		
+		System.out.println();
+	}
+	
+	public static void whiteCar(List<Profile> profiles) {
+		
+		Comparator<Profile> c = new Comparator<Profile>()
+		{
+
+			@Override
+			public int compare(Profile o1, Profile o2) {
+				if(o1.getDate().getYear()>o2.getDate().getYear()) {
+				return 1;
+			}
+				else if(o1.getDate().getYear()<o2.getDate().getYear()) {
+					return -1;
+				}
+				else {
+					if(o1.getDate().getMonth()>o2.getDate().getMonth()) {
+						return 1;
+					}
+					else if(o1.getDate().getMonth()<o2.getDate().getMonth()) {
+						return -1;
+					}
+					else {
+						if(o1.getDate().getDay()>o2.getDate().getDay()) {
+							return 1;
+						}
+						else if(o1.getDate().getDay()<o2.getDate().getDay()) {
+							return -1;
+						}
+						else {
+							return 0;
+						}
+					}
+				}
+		}
+			
+		};
+		profiles.stream()
+		.filter(x -> x.getRace().equals("White"))
+		.filter(x -> x.getCause().equals("Struck by vehicle"))
+		.sorted(c)
+		.map(x -> x.getName())
+		.forEach(x -> System.out.println(x));
+				//x.getDate().getDay() +" "+ x.getDate().getMonth() + " " + x.getDate().getYear() + " " +
+				
 		
 	}
 	
-	public void whiteCar(List<Profile> profiles) {
-		
-		
+	public static void blackKilled(List<Profile> profiles) {
+		profiles.stream()
+		.filter(x -> x.getRace().equals("Black"))
+		.filter(x -> x.getDate().getYear()==2015)
+		.filter(x -> x.getDate().getMonth()<=6)
+		.filter(x -> x.getState().equals("CA"))
+		.map(x -> x.getName())
+		.forEach(x -> System.out.println(x));
+			
+		}
+	
+	//Броят на блъснатите от кола бели
+
+	
+	public static void womenKilled(List<Profile> profiles) {
+		System.out.println(profiles.stream()
+		.filter(x -> x.getIsMan()==false)
+		.filter(x ->x.getCause().equals("Struck by vehicle"))
+		.filter(x -> x.getDate().getYear()==2015)
+		.filter(x -> x.getDate().getMonth()<=6).count());
 	}
+
+	//Фамилията и годините на жените, които не са чернокожи сортирани по 1. абревиатурата на щата, 2. датата на смъртта
 }

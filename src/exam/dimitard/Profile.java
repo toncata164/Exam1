@@ -7,14 +7,25 @@ public class Profile {
 	private Date date;
 	private String state;
 	private String cause;
+	private int age;
 	
-	public Profile (String name, boolean isMan, String race, Date date, String state, String cause) {
+	public Profile (String name, boolean isMan, String race, Date date, String state, String cause, String age) {
 		this.name = name;
 		this.isMan = isMan;
 		this.race = race;
 		this.date = date;
 		this.state = state;
 		this.cause = cause;
+		if(!age.equals("Unknown")) {
+			this.setAge(Integer.parseInt(age));
+		} 
+		else {
+			this.age=-1;
+		}
+	}
+	
+	public boolean getIsMan() {
+		return isMan;
 	}
 	
 	public String getName() {
@@ -52,5 +63,13 @@ public class Profile {
 	}
 	public void setCause(String cause) {
 		this.cause = cause;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
 	}
 }
