@@ -1,4 +1,4 @@
-package exam.resources;
+package exam.alexandra;
 
 public class PoliceKillings 
 {

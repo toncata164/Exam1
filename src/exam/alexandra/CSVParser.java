@@ -1,4 +1,4 @@
-package exam.resources;
+package exam.alexandra;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
