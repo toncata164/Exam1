@@ -1,6 +1,6 @@
 package exam.yova;
 
-public class PoliceKillingsInfo 
+public class PoliceKillingsInfo
 {
 	private String name;
 	private int age;
@@ -132,6 +132,43 @@ public class PoliceKillingsInfo
 	public PoliceKillingsInfo() //I don't know if I'll need it, but just in case
 	{
 		this(null, 0, true, null, 1, null, 1, null, null, null);
+	}
+	
+	public int monthToNumber()
+	{
+		if(this.month.equals("January"))
+			return 1;
+		else if(this.month.equals("February"))
+			return 2;
+		else if(this.month.equals("March"))
+			return 3;
+		else if(this.month.equals("April"))
+			return 4;
+		else if(this.month.equals("May"))
+			return 5;
+		else if(this.month.equals("June"))
+			return 6;
+		else if(this.month.equals("July"))
+			return 7;
+		else if(this.month.equals("August"))
+			return 8;
+		else if(this.month.equals("September"))
+			return 9;
+		else if(this.month.equals("October"))
+			return 10;
+		else if(this.month.equals("November"))
+			return 11;
+		return 12;
+	}
+	
+	public String getSurnameAndAge()
+	{
+		String result = "";
+		String[] names = this.getName().split(" ");
+		String surname = names[names.length - 1];
+		String age = "" + this.getAge();
+		result = surname + ", " + age;
+		return result;
 	}
 	
 }
