@@ -57,6 +57,12 @@ public class Parser {
 		womenKilled(profiles);
 		
 		System.out.println();
+		
+		countWhiteCar(profiles);
+		
+		System.out.println();
+		
+		notBlackWomen(profiles);
 	}
 	
 	public static void whiteCar(List<Profile> profiles) {
@@ -116,7 +122,12 @@ public class Parser {
 			
 		}
 	
-	//Броят на блъснатите от кола бели
+	public static void countWhiteCar(List<Profile> profiles) {
+		System.out.println(profiles.stream()
+				.filter(x -> x.getRace().equals("White"))
+				.filter(x -> x.getCause().equals("Struck by vehicle"))
+				.count());
+	}
 
 	
 	public static void womenKilled(List<Profile> profiles) {
@@ -127,5 +138,66 @@ public class Parser {
 		.filter(x -> x.getDate().getMonth()<=6).count());
 	}
 
-	//Фамилията и годините на жените, които не са чернокожи сортирани по 1. абревиатурата на щата, 2. датата на смъртта
+	public static void notBlackWomen(List<Profile> profiles) {
+		Comparator <Profile> c = new Comparator<>() {
+
+			@Override
+			public int compare(Profile arg0, Profile arg1) {
+				if(arg0.getState().charAt(0)>arg1.getState().charAt(0)) {
+					return 1;
+				}
+				else if(arg0.getState().charAt(0)<arg1.getState().charAt(0)) {
+					return -1;
+				}
+				else {
+					if(arg0.getState().charAt(1)>arg1.getState().charAt(1)) {
+						return 1;
+					}
+					else if(arg0.getState().charAt(1)<arg1.getState().charAt(1)) {
+						return -1;
+					}
+					else return 0;
+				}
+			}
+			
+		};
+		Comparator <Profile> cd = new Comparator<>() {
+
+			@Override
+			public int compare(Profile o1, Profile o2) {
+				if(o1.getDate().getYear()>o2.getDate().getYear()) {
+				return 1;
+			}
+				else if(o1.getDate().getYear()<o2.getDate().getYear()) {
+					return -1;
+				}
+				else {
+					if(o1.getDate().getMonth()>o2.getDate().getMonth()) {
+						return 1;
+					}
+					else if(o1.getDate().getMonth()<o2.getDate().getMonth()) {
+						return -1;
+					}
+					else {
+						if(o1.getDate().getDay()>o2.getDate().getDay()) {
+							return 1;
+						}
+						else if(o1.getDate().getDay()<o2.getDate().getDay()) {
+							return -1;
+						}
+						else {
+							return 0;
+						}
+					}
+				}
+		}
+			
+		};
+		profiles.stream()
+		.filter(x -> !x.getRace().equals("Black"))
+		.filter(x -> x.getIsMan()==false)
+		.sorted(c)
+		.sorted(cd)
+		.forEach(x -> System.out.println(x.getName() + " " + x.getAge()));;
+	}
 }
