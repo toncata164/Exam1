@@ -2,7 +2,7 @@ package exam.alexandra;
 
 public class PoliceKillings 
 {
-	int age;
+	String age;
 	String gender;
 	String raceethnicity;
 	String month;
@@ -20,10 +20,10 @@ public class PoliceKillings
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getAge() {
+	public String getAge() {
 		return age;
 	}
-	public void setAge(int age) {
+	public void setAge(String age) {
 		this.age = age;
 	}
 	public String getGender() {

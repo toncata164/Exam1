@@ -4,16 +4,19 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 
+import org.omg.Messaging.SyncScopeHelper;
+
 public class Program {
 
 	public static void main(String[] args) 
 	{
-		List<PoliceKillings> policeKillings = CSVParser.parse("./src/exam.resources/police_killings.csv");
+		List<PoliceKillings> policeKillings = CSVParser.parse("./src/exam/resources/police_killings.csv");
 		
 		allWhitePeopleStuckByVehicleDateSorted(policeKillings);
 
 	}
 	
+	@SuppressWarnings("unchecked")
 	static void allWhitePeopleStuckByVehicleDateSorted(List<PoliceKillings> policeKillings)
 	{
 		System.out.println("All white people stuck by vehicle sorted by "
@@ -100,12 +103,37 @@ public class Program {
 					}
 			
 				};
+		policeKillings.stream().
+		filter(x -> x.getRaceethnicity().equals("White")).
+		map(x -> x.getName()).
+		sorted(c).
+		distinct().
+		forEach(x -> System.out.println(x));
+		
+	}
+	
+	static void allBlackPeopleKilledInCaliforniaAfterTheSecondHalfOf2015(List<PoliceKillings> policeKillings)
+	{
+		System.out.println("Äll black people killed in California(CA) after the second half of 2015: ");
+		
+		HashMap<String, Integer> months = new HashMap<>();
+		months.put("January", 1);
+		months.put("February", 2);
+		months.put("March", 3);
+		months.put("April", 4);
+		months.put("May", 5);
+		months.put("June", 6);
+		months.put("July", 7);
+		months.put("August", 8);
+		months.put("September", 9);
+		months.put("October", 10);
+		months.put("November", 11);
+		months.put("December", 12);
 		
 		policeKillings.stream().
-		filter(x -> x.getRaceethnicity() == "White").
+		filter(x -> x.getRaceethnicity().equals("Black") && x.getYear() == 2015 && x.getMonth() > 6).
 		map(x -> x.getName()).
-		sorted();
-		
+		forEach(x -> System.out.println(x));
 	}
 
 }

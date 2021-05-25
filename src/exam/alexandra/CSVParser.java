@@ -18,12 +18,14 @@ public class CSVParser
 			List<String> lines = Files.readAllLines(Paths.get(filePath),
 					StandardCharsets.UTF_8);
 			
+			
+			lines.remove(0);
 			for(String line : lines)
 			{
 				String[] args = line.split(",");
 				
 				String name = args[0];
-				int age = Integer.parseInt(args[1]);
+				String age = args[1];
 				String gender = args[2];
 				String raceethnicity = args[3];
 				String month = args[4];
