@@ -8,7 +8,7 @@ public class Program {
 
 	public static void main(String[] args) 
 	{
-		List<PoliceKillings> policeKillings = CSVParser.parse("./src/exam/resources/police_killings.csv");
+		List<PoliceKillings> policeKillings = CSVParser.parse("./src/exam.resources/police_killings.csv");
 		
 		allWhitePeopleStuckByVehicleDateSorted(policeKillings);
 
