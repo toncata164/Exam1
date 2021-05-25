@@ -8,7 +8,9 @@ public class Program {
 
 	public static void main(String[] args) 
 	{
-		List<PoliceKillings> policeKillings = CSVParser.parse("src/exam/resources/police_killings.csv");
+		List<PoliceKillings> policeKillings = CSVParser.parse("./src/exam/resources/police_killings.csv");
+		
+		allWhitePeopleStuckByVehicleDateSorted(policeKillings);
 
 	}
 	
@@ -72,7 +74,7 @@ public class Program {
 						{
 							return 1;
 						}
-						else if(p1.getYear() < p2.getYear())
+						else 
 						{
 							if(months.get(p1.getMonth()) < months.get(p2.getMonth()))
 							{
