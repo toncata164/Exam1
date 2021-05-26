@@ -50,7 +50,6 @@ public class RockSongInfo
 	public void setFg(int fg) {
 		this.fg = fg;
 	}
-	
 	public static int compareByPlaysThenName(RockSongInfo song1, RockSongInfo song2) {
 	    if (song1.getFg() == song2.getFg()) 
 		{
