@@ -136,7 +136,7 @@ public class Parser {
 					if(arg0.getSongName().length()>arg1.getSongName().length()) {
 						for(int i = 0; i < arg1.getSongName().length();i++) {
 							
-							if(arg0.getSongName().charAt(i)>arg1.getSongName().charAt(i)) {
+							 if(arg0.getSongName().charAt(i)>arg1.getSongName().charAt(i)) {
 								return -1;
 							}
 							else if(arg0.getSongName().charAt(i)<arg1.getSongName().charAt(i)) {
