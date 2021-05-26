@@ -38,6 +38,7 @@ public class StreamApi {
 		.sorted(RockSongInfo::compareByPlaysThenName)
 		.map(x -> x.getSongName()).forEach(System.out::println);
 	}
+	
 	private static void songsWith3Letters(List<RockSongInfo> rockSongs)
 	{
 		/*

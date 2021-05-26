@@ -50,6 +50,7 @@ public class RockSongInfo
 	public void setFg(int fg) {
 		this.fg = fg;
 	}
+	
 	public static int compareByPlaysThenName(RockSongInfo song1, RockSongInfo song2) {
 	    if (song1.getFg() == song2.getFg()) 
 		{
@@ -59,7 +60,6 @@ public class RockSongInfo
 	        return song1.getSongName().compareTo(song2.getSongName());
 	    }
 	}
-	
 	public static boolean contains3Letters(String name)
 	{
 		//for(int i = 0; i < =name.length();i++)
