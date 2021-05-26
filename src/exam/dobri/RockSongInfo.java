@@ -60,6 +60,7 @@ public class RockSongInfo
 	        return song1.getSongName().compareTo(song2.getSongName());
 	    }
 	}
+	
 	public static boolean contains3Letters(String name)
 	{
 		//for(int i = 0; i < =name.length();i++)

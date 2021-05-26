@@ -25,6 +25,7 @@ public class StreamApi {
 		rockSongs.stream().filter(x -> x.getFg() <=20)
 		.map(x -> x.getSongName()).forEach(System.out::println);
 	}
+	
 	private static void songsIn1975to1980(List<RockSongInfo> rockSongs)
 	{
 		long count = rockSongs.stream().filter(x -> x.getYear()>=1975 && x.getYear() <=1980)
