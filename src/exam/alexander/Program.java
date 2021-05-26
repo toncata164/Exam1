@@ -43,11 +43,11 @@ public class Program {
 	public static void numberOfAllBandsWithSongsReleasedBetween1975And1980(List<ClassicRockSongList> classicRockSongList)
 	{
 		long temp = classicRockSongList.stream().
-		filter(x -> x.getReleaseYear().equals("1975") ||
-				x.getReleaseYear().equals("1976") ||
-				x.getReleaseYear().equals("1977") ||
-				x.getReleaseYear().equals("1978") ||
-				x.getReleaseYear().equals("1979") ||
+		filter(x -> x.getReleaseYear().equals("1975") &&
+				x.getReleaseYear().equals("1976") &&
+				x.getReleaseYear().equals("1977") &&
+				x.getReleaseYear().equals("1978") &&
+				x.getReleaseYear().equals("1979") &&
 				x.getReleaseYear().equals("1980")).
 		map(x -> x.getNameOfTheArtist()).
 		count();
