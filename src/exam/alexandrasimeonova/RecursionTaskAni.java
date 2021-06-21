@@ -12,7 +12,8 @@ public class RecursionTaskAni {
 		int[] arr = new int[n];
 		input(arr, 0, input);
 		int k = input.nextInt();
-		System.out.println(smallestDigit(k, 10));
+		//System.out.println(smallestDigit(k, 10));
+		//System.out.println(hasK(275, k));
 		/*int resultFirst = first(arr, 0, -1, k);
 		if(resultFirst != -1)
 		{
@@ -23,7 +24,7 @@ public class RecursionTaskAni {
 			System.out.println("NO");
 		}
 		*/
-		int resultSecond = second(arr, 0, 0, k);
+		int resultSecond = second(arr, 0, -1, k);
 		if(resultSecond != -1)
 		{
 			System.out.println(arr[resultSecond]);
@@ -112,12 +113,30 @@ public class RecursionTaskAni {
 		return smallestDigit(n/10, min);
 	}
 	
+	public static boolean hasK(int n, int k)
+	{
+		if(n == 0)
+			return true;
+		if(n > 0)
+		{
+			if(n%10 == k)
+			{
+				return true;
+			}
+			else
+			{
+				return hasK(n/10, k);
+			}
+		}
+		return false;
+	}
+	
 	public static int second(int[] arr, int index, int indexOfMin, int k)
 	{
 		if(index == arr.length)
 			return indexOfMin;
 		int s = smallestDigit(k, 10);
-		if(arr[index] % 10 == s)
+		if(hasK(arr[index], s))
 		{
 			if(indexOfMin != -1)
 			{
@@ -134,9 +153,11 @@ public class RecursionTaskAni {
 			{
 				return second(arr, index + 1, index, k);
 			}
-			
 		}
-		return second(arr, index + 1, indexOfMin, k);
+		else
+		{
+			return second(arr, index + 1, indexOfMin, k);
+		}
 	}
 	
 	public static void third(int[]arr, int index)
