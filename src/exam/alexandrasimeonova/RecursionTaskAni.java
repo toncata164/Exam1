@@ -12,7 +12,8 @@ public class RecursionTaskAni {
 		int[] arr = new int[n];
 		input(arr, 0, input);
 		int k = input.nextInt();
-		int resultFirst = first(arr, 0, -1, k);
+		System.out.println(smallestDigit(k, 10));
+		/*int resultFirst = first(arr, 0, -1, k);
 		if(resultFirst != -1)
 		{
 			System.out.println(arr[resultFirst]);
@@ -21,8 +22,8 @@ public class RecursionTaskAni {
 		{
 			System.out.println("NO");
 		}
-		
-		int resultSecond = second(arr, 0, -1, k);
+		*/
+		int resultSecond = second(arr, 0, 0, k);
 		if(resultSecond != -1)
 		{
 			System.out.println(arr[resultSecond]);
@@ -32,7 +33,8 @@ public class RecursionTaskAni {
 			System.out.println("NO");
 		}
 		
-		third(arr, 0);
+		//third(arr, 0);
+		
 	}
 	
 	public static void input(int[] arr, int index, Scanner in)
@@ -54,9 +56,10 @@ public class RecursionTaskAni {
 				return true;
 			}
 			else
-				return false;
+				return has7(n/10);
 		}
-		return has7(n/10);
+		return false;
+		
 	}
 	
 	public static int first(int[] arr, int index, int indexOfMax, int k)
@@ -102,7 +105,7 @@ public class RecursionTaskAni {
 		{
 			return min;
 		}
-		if(n % 10 < min && n % 10 > 0)
+		if(n % 10 < min) // n % 10 < 0
 		{
 			return smallestDigit(n/10, n%10);
 		}
@@ -113,26 +116,27 @@ public class RecursionTaskAni {
 	{
 		if(index == arr.length)
 			return indexOfMin;
-		int s = smallestDigit(arr[index], 10);
+		int s = smallestDigit(k, 10);
 		if(arr[index] % 10 == s)
 		{
 			if(indexOfMin != -1)
 			{
 				if(arr[index] < arr[indexOfMin])
 				{
-					return second(arr, index + 1, index, k/10);
+					return second(arr, index + 1, index, k);
 				}
 				else
 				{
-					return second(arr, index + 1, indexOfMin, k/10);
+					return second(arr, index + 1, indexOfMin, k);
 				}
 			}
 			else
 			{
-				return second(arr, index + 1, index, k/10);
+				return second(arr, index + 1, index, k);
 			}
+			
 		}
-		return second(arr, index + 1, indexOfMin, k/10);
+		return second(arr, index + 1, indexOfMin, k);
 	}
 	
 	public static void third(int[]arr, int index)
